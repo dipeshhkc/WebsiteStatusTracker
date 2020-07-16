@@ -10,10 +10,12 @@ func main() {
 	websites := []string{
 		"https://stackoverflow.com/",
 		"https://github.com/",
+		"https://www.linkedin.com/",
 		"http://medium.com/",
 		"https://golang.org/",
 		"https://www.udemy.com/",
 		"https://www.coursera.org/",
+		"https://1337x.to/",
 		"https://wesionary.team/",
 	}
 
