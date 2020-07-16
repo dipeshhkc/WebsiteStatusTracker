@@ -7,6 +7,7 @@ import (
 )
 
 var wg sync.WaitGroup
+var mut sync.Mutex
 
 func main() {
 
@@ -36,6 +37,8 @@ func getWebsite(website string) {
 		fmt.Println(website, "is down")
 
 	} else {
+		mut.Lock()
+		defer mut.Unlock()
 		fmt.Printf("[%d] %s is up\n", res.StatusCode, website)
 	}
 
