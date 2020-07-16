@@ -17,7 +17,6 @@ func main() {
 		"https://golang.org/",
 		"https://www.udemy.com/",
 		"https://www.coursera.org/",
-		"https://1337x.to/",
 		"https://wesionary.team/",
 	}
 
@@ -31,13 +30,11 @@ func main() {
 
 }
 func getWebsite(website string, c chan string) {
-	if res, err := http.Get(website); err != nil {
-		fmt.Println(website, "is down")
-		c <- "The site is down"
+	if _, err := http.Get(website); err != nil {
+		c <- website + "is down"
 
 	} else {
-		fmt.Printf("[%d] %s is up\n", res.StatusCode, website)
-		c <- "The site is up"
+		c <- website + "is up"
 	}
 
 }
