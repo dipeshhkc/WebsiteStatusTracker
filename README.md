@@ -3,7 +3,9 @@ We will be building a simple website status checker application. In this applica
 
 Branch
 WST1 -> contains waitgroup implementaion
+
 WST2 -> contains waitgroup+mutex implementation
+
 WST3 -> contains channel implementaion
 
 Medium Link https://medium.com/@dipesh.kc/practical-example-of-concurrency-on-golang-fc4609ea8ed1
