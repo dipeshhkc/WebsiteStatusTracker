@@ -7,9 +7,12 @@ import (
 
 func main() {
 
+	c := make(chan string)
+
 	websites := []string{
 		"https://stackoverflow.com/",
 		"https://github.com/",
+		"https://www.linkedin.com/",
 		"http://medium.com/",
 		"https://golang.org/",
 		"https://www.udemy.com/",
@@ -18,16 +21,20 @@ func main() {
 	}
 
 	for _, website := range websites {
-		getWebsite(website)
+		go getWebsite(website, c)
+	}
+
+	for msg := range c {
+		fmt.Println(msg)
 	}
 
 }
-func getWebsite(website string) {
-	if res, err := http.Get(website); err != nil {
-		fmt.Println(website, "is down")
+func getWebsite(website string, c chan string) {
+	if _, err := http.Get(website); err != nil {
+		c <- website + "is down"
 
 	} else {
-		fmt.Printf("[%d] %s is up\n", res.StatusCode, website)
+		c <- website + "is up"
 	}
 
 }
